@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mission — Clarity Academics</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --fs-xs: clamp(0.69rem, 0.15vi + 0.66rem, 0.84rem);
+        --fs-sm: clamp(0.83rem, 0.22vi + 0.78rem, 1.05rem);
+        --fs-base: clamp(1rem, 0.32vi + 0.93rem, 1.31rem);
+        --fs-md: clamp(1.2rem, 0.45vi + 1.1rem, 1.64rem);
+        --fs-lg: clamp(1.44rem, 0.63vi + 1.3rem, 2.05rem);
+        --fs-xl: clamp(1.73rem, 0.86vi + 1.54rem, 2.56rem);
+        --fs-xxl: clamp(2.07rem, 1.16vi + 1.81rem, 3.2rem);
+        --fs-xxxl: clamp(2.49rem, 1.56vi + 2.14rem, 4.01rem);
+        --fs-xxxxl: clamp(2.99rem, 2.07vi + 2.52rem, 5.01rem);
+    }
+}
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --fs-xs: 0.69rem; --fs-sm: 0.83rem; --fs-base: 1rem;
+        --fs-md: 1.2rem; --fs-lg: 1.44rem; --fs-xl: 1.73rem;
+        --fs-xxl: 2.07rem; --fs-xxxl: 2.49rem; --fs-xxxxl: 2.99rem;
+    }
+}
+:root {
+    --dusty-indigo: #3A5167;
+    --dark-indigo: #2E4252;
+    --moss-green: #8A9A5B;
+    --rich-sand: #DDBE9B;
+    --light-sand: #EFE1CD;
+    --oat-cream: #EFE9E1;
+    --rust-clay: #B26A4F;
+    --dark-clay: #8F533F;
+    --white: #ffffff;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --container-width: 1200px;
+    --section-padding-block: 8rem;
+}
+* , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+    background-color: var(--oat-cream);
+    color: var(--dusty-indigo);
+    font-family: var(--font-sans);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); line-height: 1.2; color: var(--dark-indigo); }
+p { font-family: var(--font-sans); color: var(--dusty-indigo); }
+main { position: relative; z-index: 1; }
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 2; }
+.section { padding-block: var(--section-padding-block); position: relative; }
+.mt-sm { margin-top: 1rem; }
+.mt-md { margin-top: 1.5rem; }
+.mt-lg { margin-top: 2rem; }
+.max-w-narrow { max-width: 600px; margin-left: auto; margin-right: auto; }
+.max-w-medium { max-width: 800px; margin-left: auto; margin-right: auto; }
+.section-kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--rust-clay);
+    margin-bottom: 0.9rem;
+}
+.section-title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xxxl);
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.4rem;
+    color: var(--dark-indigo);
+}
+.section-lead {
+    max-width: 680px;
+    font-size: var(--fs-base);
+    color: var(--dark-indigo);
+    opacity: 0.95;
+    margin: 0 auto;
+}
+.centered-page { text-align: center; }
+.skip-link {
+    position: absolute; top: -100%; left: 1rem; z-index: 10000;
+    padding: 0.8rem 1.6rem; background: var(--dark-indigo); color: var(--oat-cream);
+    font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: 600;
+    text-decoration: none; border-radius: 0 0 8px 8px; transition: top 0.2s ease;
+}
+.skip-link:focus { top: 0; outline: 3px solid var(--rust-clay); outline-offset: 2px; }
+.btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 1.1rem 3rem; border-radius: 50px; border: none; text-decoration: none;
+    font-family: var(--font-sans); font-size: var(--fs-sm); text-transform: uppercase;
+    letter-spacing: 0.05em; font-weight: 600; cursor: pointer; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    white-space: nowrap; position: relative;
+}
+.btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0.28), transparent 60%);
+    transform: translateX(-120%); transition: transform 0.5s ease; pointer-events: none;
+}
+.btn:hover::before { transform: translateX(0); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 18px 40px rgba(0,0,0,0.18); }
+.btn-primary { background: var(--rust-clay); color: var(--white); box-shadow: 0 10px 30px rgba(178, 106, 79, 0.3); }
+.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(178, 106, 79, 0.5); background-color: var(--dark-clay); }
+.btn-inverted { background-color: var(--oat-cream); color: var(--rust-clay); box-shadow: 0 10px 30px rgba(178, 106, 79, 0.3); }
+.btn-inverted:hover { background-color: var(--oat-cream); color: var(--rust-clay); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(178, 106, 79, 0.45); }
+.btn-light-text { color: var(--oat-cream); }
+.btn-wrapper { position: relative; display: inline-flex; gap: 1rem; flex-wrap: wrap; }
+.btn-nav { padding: 0.8rem 1.8rem; font-size: 0.8rem; }
+nav {
+    position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 2rem;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; z-index: 1000;
+    background: rgba(239, 233, 225, 0.85); backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.3); transition: 0.4s ease;
+}
+nav.scrolled { padding: 0.8rem 2rem; background: rgba(255,255,255,0.95); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+.brand-lockup { display: flex; align-items: center; gap: 12px; text-decoration: none; z-index: 1000; }
+.logo-svg { height: 75px; width: auto; transition: 0.3s; }
+nav.scrolled .logo-svg { height: 60px; }
+.brand-text h4 { font-size: var(--fs-md); line-height: 1; color: var(--dusty-indigo); font-weight: 700; letter-spacing: -0.02em; }
+.brand-text span { font-family: var(--font-sans); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.15em; color: var(--moss-green); display: block; margin-top: 4px; }
+.nav-links { display: flex; gap: 2rem; align-items: center; justify-content: center; }
+.nav-cta { display: flex; justify-content: flex-end; align-items: center; }
+.nav-links a {
+    text-decoration: none; color: var(--dusty-indigo); font-weight: 500; font-size: var(--fs-sm);
+    text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s; position: relative;
+}
+.nav-links a::after {
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px;
+    background: var(--rust-clay); transition: 0.3s;
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.hamburger { display: none; cursor: pointer; z-index: 1000; flex-direction: column; gap: 6px; background: transparent; border: none; }
+.bar { width: 30px; height: 3px; background-color: var(--dusty-indigo); transition: 0.3s; border-radius: 3px; }
+.mobile-menu {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh;
+    background: var(--oat-cream); display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 2rem; transform: translateY(-100%);
+    transition: 0.5s ease-in-out; z-index: 1000;
+}
+.mobile-menu.active { transform: translateY(0); }
+.mobile-menu > a { font-family: var(--font-serif); font-size: var(--fs-xxl); color: var(--dusty-indigo); text-decoration: none; }
+.cta-section { padding: 8rem 2rem; background-color: var(--dark-indigo); text-align: center; color: white; }
+.cta-section h2 { font-size: var(--fs-xxxl); margin-bottom: 1.5rem; color: var(--oat-cream); }
+.cta-section p { color: var(--oat-cream); }
+.cta-lead { max-width: 600px; margin: 0 auto 3rem; font-size: 1.3rem; opacity: 0.9; }
+.cta-section .btn-wrapper { display: flex; justify-content: center; }
+footer { background-color: var(--dusty-indigo); color: var(--oat-cream); padding: 5rem 2rem 2rem; }
+.footer-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;
+    max-width: 1200px; margin: 0 auto; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-col h4 { font-size: var(--fs-base); margin-bottom: 1.5rem; color: var(--rich-sand); font-weight: 700; }
+.footer-col p { font-size: var(--fs-sm); color: rgba(255,255,255,0.75); }
+.footer-col a { display: block; text-decoration: none; font-size: var(--fs-sm); color: rgba(255,255,255,0.7); margin-bottom: 0.8rem; transition: color 0.3s ease, transform 0.3s ease; }
+.footer-col a:hover { color: var(--rich-sand); transform: translateX(5px); }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: var(--fs-sm); }
+.js .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.js .reveal.active { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    .js .reveal { opacity: 1; transform: none; }
+}
+
+.page-header { padding: 7rem 1.5rem 5rem; text-align: center; }
+.page-header h1 {
+    font-family: var(--font-serif); font-size: var(--fs-xxxxl); color: var(--dark-indigo);
+    line-height: 1.05; letter-spacing: 0.02em; margin-bottom: 1.4rem;
+}
+.mission-statement {
+    background-color: var(--dark-indigo);
+    padding-block: var(--section-padding-block);
+    text-align: center;
+}
+.mission-statement .section-kicker { color: var(--rich-sand); }
+.mission-statement-text {
+    font-family: var(--font-serif); font-size: var(--fs-xxl); color: var(--oat-cream);
+    max-width: 840px; margin: 0 auto 1.4rem; line-height: 1.25; letter-spacing: 0.02em;
+}
+.mission-statement-sub {
+    max-width: 640px; margin: 0 auto; color: rgba(239,233,225,0.82); line-height: 1.8;
+}
+.pillars-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.8rem; margin-top: 3rem;
+}
+.pillar-card {
+    background: var(--white); border: 1px solid rgba(58,81,103,0.1); border-radius: 18px; padding: 2rem 1.8rem; text-align: left;
+}
+.pillar-card h3 { font-family: var(--font-serif); font-size: var(--fs-lg); color: var(--dark-indigo); margin-bottom: 0.7rem; }
+.pillar-card p { font-size: var(--fs-sm); color: var(--dusty-indigo); line-height: 1.7; opacity: 0.9; }
+.belief-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: start;
+}
+.belief-panel {
+    background: var(--white); border: 1px solid rgba(58,81,103,0.1); border-radius: 22px; padding: 2.4rem 2rem;
+}
+.belief-panel h3 { font-family: var(--font-serif); font-size: var(--fs-xl); color: var(--dark-indigo); margin-bottom: 1rem; }
+.belief-panel p { line-height: 1.8; margin-bottom: 1rem; }
+.belief-list { list-style: none; margin-top: 1.2rem; }
+.belief-list li {
+    padding: 0.9rem 0; border-top: 1px solid rgba(58,81,103,0.12); color: var(--dusty-indigo);
+}
+.belief-list li:first-child { border-top: none; padding-top: 0; }
+.promise-section { background: var(--light-sand); }
+.promise-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;
+}
+.promise-card {
+    background: rgba(255,255,255,0.7); border: 1px solid rgba(58,81,103,0.08); border-radius: 18px; padding: 1.7rem;
+}
+.promise-card h3 { font-family: var(--font-serif); font-size: var(--fs-lg); margin-bottom: 0.6rem; }
+.promise-card p { font-size: var(--fs-sm); line-height: 1.65; }
+@media (max-width: 960px) {
+    nav { grid-template-columns: 1fr auto; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .section { padding-block: 4.2rem; }
+    .belief-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+    .cta-section .btn { padding: 1rem 1.5rem; font-size: var(--fs-sm); white-space: normal; text-align: center; width: 90%; }
+    .cta-section { padding: 5rem 1.5rem; }
+    .page-header { padding: 6rem 1.2rem 4rem; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="mission.html">Mission</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <div class="btn-wrapper mt-sm">
+        <a href="insightsession.html" class="btn btn-primary btn-light-text">Book Session</a>
+    </div>
+</div>
+
+<nav id="navbar">
+    <a href="index.html" class="brand-lockup">
+        <img src="https://static.wixstatic.com/shapes/d5cd96_17f787d101e14d609ad7946ecd85bbe4.svg" alt="Clarity Academics Logo" class="logo-svg">
+        <div class="brand-text">
+            <h4>Clarity Academics</h4>
+            <span>Clarity. Confidence. Calling.</span>
+        </div>
+    </a>
+
+    <div class="nav-links">
+        <a href="mission.html" class="active">Mission</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+    </div>
+
+    <div class="nav-cta">
+        <a href="insightsession.html" class="btn btn-primary btn-nav btn-light-text">Book Insight Session</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </button>
+</nav>
+
+<main id="main-content">
+    <header class="page-header">
+        <div class="container reveal">
+            <span class="section-kicker">Why We Exist</span>
+            <h1>To Bring Clarity<br>Where School Has Brought Chaos</h1>
+            <p class="section-lead">
+                Our mission is to help students grow academically, emotionally, and spiritually through calm, rigorous support that honors both truth and the whole person.
+            </p>
+        </div>
+    </header>
+
+    <section class="mission-statement section">
+        <div class="container reveal">
+            <span class="section-kicker">Mission Statement</span>
+            <p class="mission-statement-text">
+                We believe academic growth is spiritual growth, and that the right kind of support can transform not just grades, but a student's confidence, habits, and sense of calling.
+            </p>
+            <p class="mission-statement-sub">
+                In a world of standardized testing and rigid curricula, Clarity Academics offers a steadier path: clear teaching, loving challenge, and mentorship for mind, body, and spirit.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container centered-page reveal">
+            <span class="section-kicker">What Shapes Our Work</span>
+            <h2 class="section-title">Four Core Commitments</h2>
+            <p class="section-lead">
+                These are the convictions behind every session, every recommendation, and every conversation with a family.
+            </p>
+        </div>
+        <div class="container">
+            <div class="pillars-grid">
+                <div class="pillar-card reveal">
+                    <h3>Clarity Over Confusion</h3>
+                    <p>Confusion breeds fear. We dismantle anxiety by making the complex clear, teachable, and approachable.</p>
+                </div>
+                <div class="pillar-card reveal">
+                    <h3>Loving Challenge</h3>
+                    <p>We challenge learners lovingly, because comfort never forged strong minds. Warmth and rigor belong together.</p>
+                </div>
+                <div class="pillar-card reveal">
+                    <h3>Faith and Reason</h3>
+                    <p>We don't treat belief and science as enemies. We make room for deep questions, disciplined thought, and peace.</p>
+                </div>
+                <div class="pillar-card reveal">
+                    <h3>Structure That Serves</h3>
+                    <p>Consistency and structure are not just school tools. They help students become steadier, more confident people.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container belief-grid">
+            <div class="belief-panel reveal">
+                <span class="section-kicker">What We Refuse</span>
+                <h3>We Are Not Here to Chase Empty Performance</h3>
+                <p>
+                    We don't follow educational fads, chase false urgency, or reduce students to test scores. A child can look "fine" on paper and still be discouraged, disorganized, exhausted, or quietly losing confidence.
+                </p>
+                <p>
+                    Our mission is not simply to squeeze out better numbers. It is to help students become capable, grounded learners who know how to think, how to recover, and how to move forward with peace.
+                </p>
+            </div>
+
+            <div class="belief-panel reveal">
+                <span class="section-kicker">What We Build</span>
+                <h3>A Different Kind of Academic Support</h3>
+                <ul class="belief-list">
+                    <li>Clear teaching backed by strong subject knowledge.</li>
+                    <li>Coaching that pays attention to mindset, habits, and overwhelm.</li>
+                    <li>Partnership with parents, not mystery or mixed signals.</li>
+                    <li>A learning environment where questions are safe and growth is expected.</li>
+                    <li>Support that helps evenings feel calmer, not more chaotic.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="promise-section section">
+        <div class="container centered-page reveal">
+            <span class="section-kicker">Our Promise</span>
+            <h2 class="section-title">What Families Can Expect</h2>
+            <p class="section-lead">
+                We can't promise a perfect semester. We can promise steady guidance, honest communication, and support rooted in care rather than panic.
+            </p>
+        </div>
+        <div class="container">
+            <div class="promise-grid">
+                <div class="promise-card reveal">
+                    <h3>Calm</h3>
+                    <p>We lower the emotional temperature so students can think clearly again.</p>
+                </div>
+                <div class="promise-card reveal">
+                    <h3>Consistency</h3>
+                    <p>We build repeatable rhythms that make progress more sustainable than last-minute effort.</p>
+                </div>
+                <div class="promise-card reveal">
+                    <h3>Honesty</h3>
+                    <p>We tell families the truth about what is working, what is not, and what needs to change.</p>
+                </div>
+                <div class="promise-card reveal">
+                    <h3>Hope</h3>
+                    <p>We help students see themselves not as behind, but as capable learners with a future they can picture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Ready for Clarity?</h2>
+            <p class="cta-lead">Join the enthusiastic believers who are finding confidence in the classroom and beyond.</p>
+            <div class="btn-wrapper">
+                <a href="insightsession.html" class="btn btn-inverted">Book Complimentary Insight Session</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Clarity Academics</h4>
+                <p>Lexington, KY<br>Online Worldwide</p>
+            </div>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <a href="elite.html">Elite</a>
+                <a href="core.html">Core</a>
+                <a href="cohort.html">Cohort</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:clarityacademics@gmail.com">clarityacademics@gmail.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; <span id="year"></span> Clarity Academics. All rights reserved.</div>
+    </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+let _previousBodyOverflow = '';
+function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    if (!menu || !hamburger) return;
+    const isActive = !menu.classList.contains('active');
+    menu.classList.toggle('active', isActive);
+    hamburger.setAttribute('aria-expanded', String(isActive));
+    menu.setAttribute('aria-hidden', String(!isActive));
+    if (isActive) {
+        _previousBodyOverflow = document.body.style.overflow || '';
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    } else {
+        document.body.style.overflow = _previousBodyOverflow;
+        document.body.classList.remove('menu-open');
+        hamburger.focus();
+    }
+}
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const menu = document.getElementById('mobileMenu');
+        if (menu && menu.classList.contains('active')) toggleMenu();
+    }
+});
+document.addEventListener('click', (event) => {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    if (!menu || !hamburger) return;
+    if (!menu.classList.contains('active')) return;
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) toggleMenu();
+});
+window.addEventListener('resize', () => {
+    const menu = document.getElementById('mobileMenu');
+    if (window.innerWidth >= 960 && menu && menu.classList.contains('active')) toggleMenu();
+});
+const revealElements = document.querySelectorAll('.reveal');
+function handleReveal() {
+    const windowHeight = window.innerHeight;
+    const offset = 70;
+    revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < windowHeight - offset) el.classList.add('active');
+    });
+}
+window.addEventListener('load', handleReveal);
+const nav = document.getElementById('navbar');
+function handleNavScroll() {
+    if (!nav) return;
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+}
+let _scrollRafPending = false;
+function _onScrollRaf() {
+    if (_scrollRafPending) return;
+    _scrollRafPending = true;
+    requestAnimationFrame(() => {
+        _scrollRafPending = false;
+        handleNavScroll();
+        handleReveal();
+    });
+}
+window.addEventListener('scroll', _onScrollRaf, { passive: true });
+window.addEventListener('load', handleNavScroll);
+(function syncBodyPaddingWithNav() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    let lastHeight = 0;
+    let rafId = 0;
+    function applyPaddingIfNeeded() {
+        const h = Math.ceil(navbar.getBoundingClientRect().height);
+        if (h > lastHeight) {
+            lastHeight = h;
+            document.body.style.paddingTop = h + 'px';
+        }
+    }
+    function schedule() {
+        if (rafId) return;
+        rafId = requestAnimationFrame(() => {
+            rafId = 0;
+            applyPaddingIfNeeded();
+        });
+    }
+    applyPaddingIfNeeded();
+    if ('ResizeObserver' in window) {
+        const ro = new ResizeObserver(schedule);
+        ro.observe(navbar);
+    } else {
+        window.addEventListener('resize', schedule, { passive: true });
+        window.addEventListener('scroll', schedule, { passive: true });
+    }
+    window.addEventListener('load', schedule, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule).catch(() => {});
+})();
+const yearSpan = document.getElementById('year');
+if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+const hamburgerBtn = document.getElementById('hamburger');
+if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+const mobileMenuEl = document.getElementById('mobileMenu');
+if (mobileMenuEl) {
+    mobileMenuEl.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            if (mobileMenuEl.classList.contains('active')) toggleMenu();
+        });
+    });
+}
+</script>
+</body>
+</html>
