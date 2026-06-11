@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Services — Clarity Academics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --fs-xs: clamp(0.69rem, 0.15vi + 0.66rem, 0.84rem);
+        --fs-sm: clamp(0.83rem, 0.22vi + 0.78rem, 1.05rem);
+        --fs-base: clamp(1rem, 0.32vi + 0.93rem, 1.31rem);
+        --fs-md: clamp(1.2rem, 0.45vi + 1.1rem, 1.64rem);
+        --fs-lg: clamp(1.44rem, 0.63vi + 1.3rem, 2.05rem);
+        --fs-xl: clamp(1.73rem, 0.86vi + 1.54rem, 2.56rem);
+        --fs-xxl: clamp(2.07rem, 1.16vi + 1.81rem, 3.2rem);
+        --fs-xxxl: clamp(2.49rem, 1.56vi + 2.14rem, 4.01rem);
+        --fs-xxxxl: clamp(2.99rem, 2.07vi + 2.52rem, 5.01rem);
+    }
+}
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --fs-xs: 0.69rem; --fs-sm: 0.83rem; --fs-base: 1rem;
+        --fs-md: 1.2rem; --fs-lg: 1.44rem; --fs-xl: 1.73rem;
+        --fs-xxl: 2.07rem; --fs-xxxl: 2.49rem; --fs-xxxxl: 2.99rem;
+    }
+}
+:root {
+    --dusty-indigo: #3A5167; --dark-indigo: #2E4252; --moss-green: #8A9A5B;
+    --rich-sand: #DDBE9B; --light-sand: #EFE1CD; --oat-cream: #EFE9E1;
+    --rust-clay: #B26A4F; --dark-clay: #8F533F; --white: #ffffff;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --container-width: 1200px;
+    --section-padding-block: 8rem;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { background-color: var(--oat-cream); color: var(--dusty-indigo); font-family: var(--font-sans); font-size: var(--fs-base); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-serif); line-height: 1.2; color: var(--dark-indigo); }
+p { font-family: var(--font-sans); color: var(--dusty-indigo); }
+main { position: relative; z-index: 1; }
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 2; }
+.section { padding-block: var(--section-padding-block); position: relative; }
+.mt-sm { margin-top: 1rem; } .mt-md { margin-top: 1.5rem; } .mt-lg { margin-top: 2rem; }
+.max-w-narrow { max-width: 600px; margin-left: auto; margin-right: auto; }
+.section-kicker { display: inline-block; font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.18em; font-size: var(--fs-xs); font-weight: 600; color: var(--rust-clay); margin-bottom: 0.9rem; }
+.section-title { font-family: var(--font-serif); font-size: var(--fs-xxxl); line-height: 1.1; letter-spacing: 0.05em; margin-bottom: 1.4rem; color: var(--dark-indigo); }
+.section-lead { max-width: 680px; font-size: var(--fs-base); color: var(--dark-indigo); opacity: 0.95; margin: 0 auto; }
+.centered-page { text-align: center; }
+.skip-link { position: absolute; top: -100%; left: 1rem; z-index: 10000; padding: 0.8rem 1.6rem; background: var(--dark-indigo); color: var(--oat-cream); font-family: var(--font-sans); font-size: var(--fs-sm); font-weight: 600; text-decoration: none; border-radius: 0 0 8px 8px; transition: top 0.2s ease; }
+.skip-link:focus { top: 0; outline: 3px solid var(--rust-clay); outline-offset: 2px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 1.1rem 3rem; border-radius: 50px; border: none; text-decoration: none; font-family: var(--font-sans); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; cursor: pointer; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease; white-space: nowrap; position: relative; }
+.btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,0.28), transparent 60%); transform: translateX(-120%); transition: transform 0.5s ease; pointer-events: none; }
+.btn:hover::before { transform: translateX(0); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 18px 40px rgba(0,0,0,0.18); }
+.btn-primary { background: var(--rust-clay); color: var(--white); box-shadow: 0 10px 30px rgba(178,106,79,0.3); }
+.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(178,106,79,0.5); background-color: var(--dark-clay); }
+.btn-inverted { background-color: var(--oat-cream); color: var(--rust-clay); box-shadow: 0 10px 30px rgba(178,106,79,0.3); }
+.btn-inverted:hover { background-color: var(--oat-cream); color: var(--rust-clay); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(178,106,79,0.45); }
+.btn-light-text { color: var(--oat-cream); }
+.btn-wrapper { position: relative; display: inline-flex; gap: 1rem; flex-wrap: wrap; }
+.btn-nav { padding: 0.8rem 1.8rem; font-size: 0.8rem; }
+nav { position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 2rem; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; z-index: 1000; background: rgba(239,233,225,0.85); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.3); transition: 0.4s ease; }
+nav.scrolled { padding: 0.8rem 2rem; background: rgba(255,255,255,0.95); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+.brand-lockup { display: flex; align-items: center; gap: 12px; text-decoration: none; z-index: 1000; }
+.logo-svg { height: 75px; width: auto; transition: 0.3s; }
+nav.scrolled .logo-svg { height: 60px; }
+.brand-text h4 { font-size: var(--fs-md); line-height: 1; color: var(--dusty-indigo); font-weight: 700; letter-spacing: -0.02em; }
+.brand-text span { font-family: var(--font-sans); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.15em; color: var(--moss-green); display: block; margin-top: 4px; }
+.nav-links { display: flex; gap: 2rem; align-items: center; justify-content: center; }
+.nav-cta { display: flex; justify-content: flex-end; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--dusty-indigo); font-weight: 500; font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: var(--rust-clay); transition: 0.3s; }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.hamburger { display: none; cursor: pointer; z-index: 1000; flex-direction: column; gap: 6px; background: transparent; border: none; }
+.bar { width: 30px; height: 3px; background-color: var(--dusty-indigo); transition: 0.3s; border-radius: 3px; }
+.mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background: var(--oat-cream); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transform: translateY(-100%); transition: 0.5s ease-in-out; z-index: 1000; }
+.mobile-menu.active { transform: translateY(0); }
+.mobile-menu > a { font-family: var(--font-serif); font-size: var(--fs-xxl); color: var(--dusty-indigo); text-decoration: none; }
+.faq-grid { max-width: 800px; margin: 0 auto; }
+details.faq-item { border-radius: 18px; border: 1px solid rgba(58,81,103,0.18); background: rgba(255,255,255,0.98); padding: 1.1rem 1.4rem; margin-bottom: 0.9rem; box-shadow: 0 12px 32px rgba(0,0,0,0.04); }
+details.faq-item[open] { box-shadow: 0 18px 48px rgba(0,0,0,0.07); }
+.faq-item summary { list-style: none; cursor: pointer; font-size: var(--fs-base); font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-align: left; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-question { flex: 1; }
+.faq-toggle-icon { flex-shrink: 0; font-style: normal; font-size: var(--fs-md); opacity: 0.55; }
+.faq-item p { margin-top: 0.7rem; font-size: var(--fs-sm); }
+.cta-section { padding: 8rem 2rem; background-color: var(--dark-indigo); text-align: center; color: white; }
+.cta-section h2 { font-size: var(--fs-xxxl); margin-bottom: 1.5rem; color: var(--oat-cream); }
+.cta-section p { color: var(--oat-cream); }
+.cta-lead { max-width: 600px; margin: 0 auto 3rem; font-size: 1.3rem; opacity: 0.9; }
+.cta-section .btn-wrapper { display: flex; justify-content: center; }
+footer { background-color: var(--dusty-indigo); color: var(--oat-cream); padding: 5rem 2rem 2rem; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-col h4 { font-size: var(--fs-base); margin-bottom: 1.5rem; color: var(--rich-sand); font-weight: 700; }
+.footer-col p { font-size: var(--fs-sm); color: rgba(255,255,255,0.75); }
+.footer-col a { display: block; text-decoration: none; font-size: var(--fs-sm); color: rgba(255,255,255,0.7); margin-bottom: 0.8rem; transition: color 0.3s ease, transform 0.3s ease; }
+.footer-col a:hover { color: var(--rich-sand); transform: translateX(5px); }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: var(--fs-sm); }
+.js .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.js .reveal.active { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ================================================================
+   PAGE-SPECIFIC: SERVICES
+   ================================================================ */
+.page-header { padding: 7rem 1.5rem 5rem; text-align: center; }
+.page-header h1 { font-family: var(--font-serif); font-size: var(--fs-xxxxl); color: var(--dark-indigo); line-height: 1.05; letter-spacing: 0.02em; margin-bottom: 1.4rem; }
+
+/* Service cards — full width stacked rows */
+.service-block {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: start;
+    padding: 4rem 0;
+    border-top: 1px solid rgba(58,81,103,0.12);
+}
+.service-block:first-of-type { border-top: none; }
+.service-block-meta { position: sticky; top: 120px; }
+.service-tier {
+    font-family: var(--font-sans); font-size: var(--fs-xs); text-transform: uppercase;
+    letter-spacing: 0.2em; font-weight: 600; color: var(--moss-green); margin-bottom: 0.6rem;
+}
+.service-block h2 {
+    font-family: var(--font-serif); font-size: var(--fs-xxxl); color: var(--dark-indigo);
+    line-height: 1.1; margin-bottom: 1.2rem;
+}
+.service-tagline {
+    font-family: var(--font-serif); font-style: italic; font-size: var(--fs-lg);
+    color: var(--dusty-indigo); opacity: 0.75; margin-bottom: 1.8rem; line-height: 1.4;
+}
+.service-block p {
+    font-size: var(--fs-base); line-height: 1.8; color: var(--dusty-indigo); margin-bottom: 1rem;
+}
+.service-features {
+    list-style: none; margin: 1.8rem 0 2rem;
+    border-top: 1px solid rgba(58,81,103,0.12);
+}
+.service-features li {
+    display: flex; align-items: baseline; gap: 0.7rem;
+    padding: 0.75rem 0; border-bottom: 1px solid rgba(58,81,103,0.08);
+    font-size: var(--fs-sm); color: var(--dusty-indigo);
+}
+.service-features li::before {
+    content: '—'; color: var(--rust-clay); font-weight: 700; flex-shrink: 0;
+}
+
+/* Who it's for chip */
+.for-chip {
+    display: inline-block; background: var(--light-sand); border-radius: 50px;
+    padding: 0.4rem 1.1rem; font-size: var(--fs-xs); font-family: var(--font-sans);
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--dusty-indigo); margin-bottom: 1.5rem;
+}
+
+/* Dark section for Elite */
+.elite-section { background-color: var(--dark-indigo); padding-block: var(--section-padding-block); }
+.elite-section .service-block { border-top-color: rgba(255,255,255,0.1); }
+.elite-section .service-block:first-of-type { border-top: none; }
+.elite-section .service-tier { color: var(--rich-sand); }
+.elite-section .service-block h2 { color: var(--oat-cream); }
+.elite-section .service-tagline { color: rgba(239,233,225,0.7); }
+.elite-section .service-block p { color: rgba(239,233,225,0.85); }
+.elite-section .service-features { border-top-color: rgba(255,255,255,0.1); }
+.elite-section .service-features li { border-bottom-color: rgba(255,255,255,0.06); color: rgba(239,233,225,0.85); }
+.elite-section .for-chip { background: rgba(255,255,255,0.1); color: var(--oat-cream); }
+
+/* Comparison strip */
+.compare-section { background: var(--light-sand); padding-block: var(--section-padding-block); }
+.compare-table {
+    width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-size: var(--fs-sm);
+}
+.compare-table th {
+    font-family: var(--font-serif); font-size: var(--fs-md); font-weight: 700;
+    color: var(--dark-indigo); padding: 1rem 1.2rem; text-align: left;
+    border-bottom: 2px solid rgba(58,81,103,0.2);
+}
+.compare-table th:first-child { width: 30%; }
+.compare-table td {
+    padding: 0.9rem 1.2rem; border-bottom: 1px solid rgba(58,81,103,0.1);
+    color: var(--dusty-indigo); vertical-align: top;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { font-weight: 600; color: var(--dark-indigo); }
+.check { color: var(--moss-green); font-weight: 700; }
+.dash { color: rgba(58,81,103,0.3); }
+
+@media (max-width: 960px) {
+    nav { grid-template-columns: 1fr auto; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .section { padding-block: 4.2rem; }
+    .service-block { grid-template-columns: 1fr; gap: 2rem; }
+    .service-block-meta { position: static; }
+    .compare-table { font-size: var(--fs-xs); }
+    .compare-table th, .compare-table td { padding: 0.7rem 0.8rem; }
+}
+@media (max-width: 640px) {
+    .cta-section .btn { padding: 1rem 1.5rem; font-size: var(--fs-sm); white-space: normal; text-align: center; width: 90%; }
+    .cta-section { padding: 5rem 1.5rem; }
+    .compare-table th:first-child { width: 35%; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="mission.html">Mission</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <div class="btn-wrapper mt-sm">
+        <a href="insightsession.html" class="btn btn-primary btn-light-text">Book Session</a>
+    </div>
+</div>
+
+<nav id="navbar">
+    <a href="index.html" class="brand-lockup">
+        <img src="https://static.wixstatic.com/shapes/d5cd96_17f787d101e14d609ad7946ecd85bbe4.svg" alt="Clarity Academics Logo" class="logo-svg">
+        <div class="brand-text">
+            <h4>Clarity Academics</h4>
+            <span>Clarity. Confidence. Calling.</span>
+        </div>
+    </a>
+    <div class="nav-links">
+        <a href="mission.html">Mission</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="about.html">About</a>
+    </div>
+    <div class="nav-cta">
+        <a href="insightsession.html" class="btn btn-primary btn-nav btn-light-text">Book Insight Session</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </button>
+</nav>
+
+<main id="main-content">
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <div class="container reveal">
+            <span class="section-kicker">Programs &amp; Services</span>
+            <h1>Three Tiers.<br>One Philosophy.</h1>
+            <p class="section-lead">
+                Every program is built around the same belief: the right support should make a student calmer, more capable, and more confident — not just better at test prep.
+            </p>
+        </div>
+    </header>
+
+
+    <!-- ELITE — dark background -->
+    <section class="elite-section section" id="elite">
+        <div class="container">
+            <div class="service-block">
+                <div class="service-block-meta reveal">
+                    <p class="service-tier">Flagship Program</p>
+                    <h2>Clarity Elite</h2>
+                    <p class="service-tagline">"From overwhelmed and reactive to clear, proactive, and grounded."</p>
+                    <span class="for-chip">Best for: whole-student support</span>
+                    <a href="insightsession.html" class="btn btn-inverted">Book a Consult</a>
+                </div>
+                <div class="reveal">
+                    <p>
+                        When school starts touching everything — your child's sleep, mood, confidence, and even how they talk about God — Clarity Elite steps in as a steady guide. We combine high-level tutoring with coaching on mindset, organization, and faith-shaped resilience.
+                    </p>
+                    <p>
+                        Over time, grades stabilize, evenings calm down, and your child starts to see themselves not as "behind," but as a capable learner with a future they can actually picture.
+                    </p>
+                    <ul class="service-features">
+                        <li>Deep subject tutoring in Math and Science (including AP-level courses)</li>
+                        <li>Executive function coaching: organization, planning, and follow-through</li>
+                        <li>Mindset and resilience work woven into every session</li>
+                        <li>Regular parent partnership check-ins and progress updates</li>
+                        <li>Between-session access and support for urgent questions</li>
+                        <li>Whole-student care: sleep, stress, habits, and confidence addressed alongside content</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CORE + COHORT — light background -->
+    <section class="section" id="core">
+        <div class="container">
+
+            <div class="service-block">
+                <div class="service-block-meta reveal">
+                    <p class="service-tier">1-on-1 Tutoring</p>
+                    <h2>Clarity Core</h2>
+                    <p class="service-tagline">"If I show up and do the plan, I can handle this."</p>
+                    <span class="for-chip">Best for: students slipping through the cracks</span>
+                    <a href="insightsession.html" class="btn btn-primary btn-light-text">Book a Consult</a>
+                </div>
+                <div class="reveal">
+                    <p>
+                        Clarity Core is for the student who can learn the material but keeps slipping through the cracks — missed points, rushed homework, shaky test prep. In a consistent 1:1 space, we slow things down, clear up confusion, and build solid study habits right alongside content.
+                    </p>
+                    <p>
+                        The result is less panicked cramming, more predictable performance, and a student who knows exactly what to do when they sit down to study.
+                    </p>
+                    <ul class="service-features">
+                        <li>Weekly 1:1 sessions focused on the student's current coursework</li>
+                        <li>Clear explanations of concepts — not just solving the homework</li>
+                        <li>Study habit and test prep strategies built into every session</li>
+                        <li>Steady, low-pressure accountability week over week</li>
+                        <li>Parent updates on progress and areas of focus</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-block" id="cohort">
+                <div class="service-block-meta reveal">
+                    <p class="service-tier">Small Group</p>
+                    <h2>Clarity Cohort</h2>
+                    <p class="service-tagline">"Learning lighter, more normal, and a lot less scary."</p>
+                    <span class="for-chip">Best for: students who learn alongside others</span>
+                    <a href="insightsession.html" class="btn btn-primary btn-light-text">Book a Consult</a>
+                </div>
+                <div class="reveal">
+                    <p>
+                        Some students open up the moment they realize they're not the only one who doesn't "get it" yet. Clarity Cohort turns that moment into a weekly rhythm — small, carefully led groups where students ask real questions, work through hard problems, and see how others think.
+                    </p>
+                    <p>
+                        Over time, they stop feeling isolated or "behind," and start feeling part of a community that makes school feel less intimidating and a lot more manageable.
+                    </p>
+                    <ul class="service-features">
+                        <li>Small group sessions (3–6 students) with guided instruction</li>
+                        <li>Collaborative problem-solving and peer learning built into every class</li>
+                        <li>Structured curriculum aligned to students' current coursework</li>
+                        <li>A safe environment to ask questions without fear of judgment</li>
+                        <li>More affordable than 1:1 while still offering personal attention</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- COMPARISON TABLE -->
+    <section class="compare-section section">
+        <div class="container centered-page reveal">
+            <span class="section-kicker">Side by Side</span>
+            <h2 class="section-title">Which Program Fits?</h2>
+            <p class="section-lead">Not sure where to start? This breakdown can help — and we'll talk it through together in your free consult.</p>
+        </div>
+        <div class="container reveal">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Elite</th>
+                        <th>Core</th>
+                        <th>Cohort</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Format</td>
+                        <td>1:1, ongoing</td>
+                        <td>1:1, weekly</td>
+                        <td>Small group</td>
+                    </tr>
+                    <tr>
+                        <td>Subject tutoring</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Mindset &amp; executive function coaching</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>Parent partnership check-ins</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="dash">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>Between-session access</td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>Peer learning environment</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Best for</td>
+                        <td>Overwhelmed students needing full-picture support</td>
+                        <td>Students with specific subject gaps or study habit issues</td>
+                        <td>Students who thrive learning alongside peers</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container centered-page">
+            <div class="reveal">
+                <span class="section-kicker">Questions, answered</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-lead">A few of the most common questions families ask before getting started.</p>
+            </div>
+            <div class="faq-grid mt-lg">
+                <details class="faq-item reveal">
+                    <summary><span class="faq-question">Can we start with Core or Cohort and move up to Elite later?</span><span class="faq-toggle-icon" aria-hidden="true">+</span></summary>
+                    <p>Yes. Many families start with Core or Cohort to stabilize grades, then move into Elite when they're ready for deeper coaching and between-session access. We'll help you decide if and when that shift makes sense.</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary><span class="faq-question">Does my student have to be in AP Physics to join Elite?</span><span class="faq-toggle-icon" aria-hidden="true">+</span></summary>
+                    <p>No. AP Physics Elite is one path, but the Hybrid Coaching + Tutoring path is open to students in upper-level math or science who need whole-picture support. We'll talk through courses, goals, and bandwidth in your consult.</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary><span class="faq-question">Do you work with students who are already doing "fine" in school?</span><span class="faq-toggle-icon" aria-hidden="true">+</span></summary>
+                    <p>Absolutely. Some Elite students already have strong grades but feel constantly behind, anxious, or unsure how to sustain their pace. Elite can help them shift from grinding to grounded.</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary><span class="faq-question">How does scheduling and billing work?</span><span class="faq-toggle-icon" aria-hidden="true">+</span></summary>
+                    <p>We'll agree on a weekly time (or times) that works with your family's rhythms. Billing is handled in simple, predictable blocks — no surprise add-ons. Full policy details are shared before you commit, and we'll walk through them together.</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary><span class="faq-question">What if my student is anxious or hesitant about coaching?</span><span class="faq-toggle-icon" aria-hidden="true">+</span></summary>
+                    <p>That's normal. We never force vulnerability. The first sessions focus on calm, concrete wins: understanding the material better, getting organized, reducing "surprise" stress. Trust tends to follow results.</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary><span class="faq-question">What happens if we need to pause or change tiers?</span><span class="faq-toggle-icon" aria-hidden="true">+</span></summary>
+                    <p>Life happens. If you need to pause or switch tiers, we'll talk through options and keep communication clear so your student never feels blindsided by adult logistics.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Ready for Clarity?</h2>
+            <p class="cta-lead">Join the enthusiastic believers who are finding confidence in the classroom and beyond.</p>
+            <div class="btn-wrapper">
+                <a href="insightsession.html" class="btn btn-inverted">Book Complimentary Insight Session</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>Clarity Academics</h4><p>Lexington, KY<br>Online Worldwide</p></div>
+            <div class="footer-col"><h4>Programs</h4><a href="elite.html">Elite</a><a href="core.html">Core</a><a href="cohort.html">Cohort</a></div>
+            <div class="footer-col"><h4>Legal</h4><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a></div>
+            <div class="footer-col"><h4>Contact</h4><a href="mailto:clarityacademics@gmail.com">clarityacademics@gmail.com</a></div>
+        </div>
+        <div class="footer-bottom">&copy; <span id="year"></span> Clarity Academics. All rights reserved.</div>
+    </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+let _previousBodyOverflow = '';
+function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    if (!menu || !hamburger) return;
+    const isActive = !menu.classList.contains('active');
+    menu.classList.toggle('active', isActive);
+    hamburger.setAttribute('aria-expanded', String(isActive));
+    menu.setAttribute('aria-hidden', String(!isActive));
+    if (isActive) {
+        _previousBodyOverflow = document.body.style.overflow || '';
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    } else {
+        document.body.style.overflow = _previousBodyOverflow;
+        document.body.classList.remove('menu-open');
+        hamburger.focus();
+    }
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { const m = document.getElementById('mobileMenu'); if (m && m.classList.contains('active')) toggleMenu(); }});
+document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    if (!menu || !hamburger || !menu.classList.contains('active')) return;
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) toggleMenu();
+});
+window.addEventListener('resize', () => { const m = document.getElementById('mobileMenu'); if (window.innerWidth >= 960 && m && m.classList.contains('active')) toggleMenu(); });
+const revealElements = document.querySelectorAll('.reveal');
+function handleReveal() {
+    const wh = window.innerHeight, offset = 70;
+    revealElements.forEach(el => { if (el.getBoundingClientRect().top < wh - offset) el.classList.add('active'); });
+}
+window.addEventListener('load', handleReveal);
+const nav = document.getElementById('navbar');
+function handleNavScroll() { if (!nav) return; nav.classList.toggle('scrolled', window.scrollY > 50); }
+let _raf = false;
+window.addEventListener('scroll', () => { if (_raf) return; _raf = true; requestAnimationFrame(() => { _raf = false; handleNavScroll(); handleReveal(); }); }, { passive: true });
+window.addEventListener('load', handleNavScroll);
+(function() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    let last = 0, rid = 0;
+    function apply() { const h = Math.ceil(navbar.getBoundingClientRect().height); if (h > last) { last = h; document.body.style.paddingTop = h + 'px'; } }
+    function schedule() { if (rid) return; rid = requestAnimationFrame(() => { rid = 0; apply(); }); }
+    apply();
+    if ('ResizeObserver' in window) { new ResizeObserver(schedule).observe(navbar); }
+    else { window.addEventListener('resize', schedule, { passive: true }); }
+    window.addEventListener('load', schedule, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule).catch(() => {});
+})();
+const yearSpan = document.getElementById('year');
+if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('toggle', () => { const icon = item.querySelector('.faq-toggle-icon'); if (icon) icon.textContent = item.open ? '\u2212' : '+'; });
+});
+const hBtn = document.getElementById('hamburger');
+if (hBtn) hBtn.addEventListener('click', toggleMenu);
+const mMenu = document.getElementById('mobileMenu');
+if (mMenu) mMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { if (mMenu.classList.contains('active')) toggleMenu(); }); });
+</script>
+</body>
+</html>
