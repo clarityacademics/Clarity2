@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Clarity Academics — Academic Coaching & Tutoring</title>
+
+    <!-- BRAND FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================================================================
+                     TABLE OF CONTENTS
+ ================================================================
+   1. CSS CUSTOM PROPERTIES (Brand Tokens & Fluid Typography)
+   2. CSS RESET & BASE STYLES
+   3. UTILITY CLASSES
+   4. SKIP LINK
+   5. BUTTON STYLES
+   6. NAVIGATION
+   7. MOBILE MENU
+   8. FAQ SECTION
+   9. FINAL CTA / CONTACT
+   10. FOOTER
+   11. REVEAL ANIMATIONS
+   12. RESPONSIVE BREAKPOINTS
+   ---- PAGE-SPECIFIC STYLES ----
+   13. HERO
+   14. INTRO / BELIEF
+   15. VALUES
+   16. SERVICES / PROGRAMS
+   17. ABOUT FOUNDER
+   ================================================================ */
+
+
+/* ================================================================
+   1. CSS CUSTOM PROPERTIES
+   ================================================================ */
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --fs-xs:    clamp(0.69rem,  0.15vi + 0.66rem, 0.84rem);
+        --fs-sm:    clamp(0.83rem,  0.22vi + 0.78rem, 1.05rem);
+        --fs-base:  clamp(1rem,     0.32vi + 0.93rem, 1.31rem);
+        --fs-md:    clamp(1.2rem,   0.45vi + 1.1rem,  1.64rem);
+        --fs-lg:    clamp(1.44rem,  0.63vi + 1.3rem,  2.05rem);
+        --fs-xl:    clamp(1.73rem,  0.86vi + 1.54rem, 2.56rem);
+        --fs-xxl:   clamp(2.07rem,  1.16vi + 1.81rem, 3.2rem);
+        --fs-xxxl:  clamp(2.49rem,  1.56vi + 2.14rem, 4.01rem);
+        --fs-xxxxl: clamp(2.99rem,  2.07vi + 2.52rem, 5.01rem);
+    }
+}
+
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --fs-xs: 0.69rem; --fs-sm: 0.83rem; --fs-base: 1rem;
+        --fs-md: 1.2rem;  --fs-lg: 1.44rem; --fs-xl: 1.73rem;
+        --fs-xxl: 2.07rem; --fs-xxxl: 2.49rem; --fs-xxxxl: 2.99rem;
+    }
+    @media screen and (min-width: 1920px) {
+        :root {
+            --fs-xs: 0.84rem; --fs-sm: 1.05rem; --fs-base: 1.31rem;
+            --fs-md: 1.64rem; --fs-lg: 2.05rem; --fs-xl: 2.56rem;
+            --fs-xxl: 3.2rem; --fs-xxxl: 4.01rem; --fs-xxxxl: 5.01rem;
+        }
+    }
+}
+
+:root {
+    --dusty-indigo:  #3A5167;
+    --dark-indigo:   #2E4252;
+    --moss-green:    #8A9A5B;
+    --rich-sand:     #DDBE9B;
+    --light-sand:    #EFE1CD;
+    --oat-cream:     #EFE9E1;
+    --rust-clay:     #B26A4F;
+    --dark-clay:     #8F533F;
+    --white:         #ffffff;
+    --font-serif:    'Cormorant Garamond', serif;
+    --font-sans:     'Montserrat', sans-serif;
+    --container-width: 1200px;
+    --section-padding-block: 8rem;
+}
+
+
+/* ================================================================
+   2. CSS RESET & BASE STYLES
+   ================================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+
+body {
+    background-color: var(--oat-cream);
+    color: var(--dusty-indigo);
+    font-family: var(--font-sans);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); line-height: 1.2; color: var(--dark-indigo); }
+p { font-family: var(--font-sans); color: var(--dusty-indigo); }
+
+
+/* ================================================================
+   3. UTILITY CLASSES
+   ================================================================ */
+main { position: relative; z-index: 1; }
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.section {
+    padding-block: var(--section-padding-block);
+    position: relative;
+}
+
+.mt-sm  { margin-top: 1rem; }
+.mt-md  { margin-top: 1.5rem; }
+.mt-lg  { margin-top: 2rem; }
+.mb-sm  { margin-bottom: 0.9rem; }
+.mb-md  { margin-bottom: 1.5rem; }
+.mb-lg  { margin-bottom: 3rem; }
+
+.max-w-narrow  { max-width: 600px; margin-left: auto; margin-right: auto; }
+.max-w-medium  { max-width: 800px; margin-left: auto; margin-right: auto; }
+
+.panel-dark {
+    background-color: var(--dark-indigo);
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+}
+
+.section-kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--rust-clay);
+    margin-bottom: 0.9rem;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xxxl);
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.4rem;
+    color: var(--dark-indigo);
+}
+
+.section-lead {
+    max-width: 640px;
+    font-size: var(--fs-base);
+    color: var(--dark-indigo);
+    opacity: 0.95;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: var(--fs-xxxl);
+    margin-bottom: 1.5rem;
+    color: var(--dusty-indigo);
+}
+
+.centered-page { text-align: center; }
+
+
+/* ================================================================
+   4. SKIP LINK
+   ================================================================ */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 10000;
+    padding: 0.8rem 1.6rem;
+    background: var(--dark-indigo);
+    color: var(--oat-cream);
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    transition: top 0.2s ease;
+}
+.skip-link:focus { top: 0; outline: 3px solid var(--rust-clay); outline-offset: 2px; }
+
+
+/* ================================================================
+   5. BUTTON STYLES
+   ================================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem 3rem;
+    border-radius: 50px;
+    border: none;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0.28), transparent 60%);
+    transform: translateX(-120%);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+.btn:hover::before { transform: translateX(0); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 18px 40px rgba(0,0,0,0.18); }
+
+.btn-primary {
+    background: var(--rust-clay);
+    color: var(--white);
+    box-shadow: 0 10px 30px rgba(178, 106, 79, 0.3);
+}
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(178, 106, 79, 0.5);
+    background-color: var(--dark-clay);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1.5px solid var(--dusty-indigo);
+    color: var(--dusty-indigo);
+    box-shadow: 0 10px 24px rgba(58, 81, 103, 0.08);
+}
+.btn-secondary:hover { background: var(--dusty-indigo); color: var(--white); }
+
+.btn-wrapper {
+    position: relative;
+    display: inline-flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-nav { padding: 0.8rem 1.8rem; font-size: 0.8rem; }
+
+/* CTA Inverted Button */
+.btn-inverted {
+    background-color: var(--oat-cream);
+    color: var(--rust-clay);
+    box-shadow: 0 10px 30px rgba(178, 106, 79, 0.3);
+}
+.btn-inverted:hover {
+    background-color: var(--oat-cream);
+    color: var(--rust-clay);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(178, 106, 79, 0.45);
+}
+
+.btn-light-text { color: var(--oat-cream); }
+
+
+/* ================================================================
+   6. NAVIGATION
+   ================================================================ */
+nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(239, 233, 225, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: 0.4s ease;
+}
+
+nav.scrolled {
+    padding: 0.8rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.brand-lockup { display: flex; align-items: center; gap: 12px; text-decoration: none; z-index: 1000; }
+.logo-svg { height: 75px; width: auto; transition: 0.3s; }
+nav.scrolled .logo-svg { height: 60px; }
+
+.brand-text h4 {
+    font-size: var(--fs-md);
+    line-height: 1;
+    color: var(--dusty-indigo);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.brand-text span {
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--moss-green);
+    display: block;
+    margin-top: 4px;
+}
+
+.nav-links { display: flex; gap: 2rem; align-items: center; justify-content: center; }
+.nav-cta { display: flex; justify-content: flex-end; align-items: center; }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dusty-indigo);
+    font-weight: 500;
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+    position: relative;
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 0;
+    width: 0%; height: 2px;
+    background: var(--rust-clay);
+    transition: 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+
+/* ================================================================
+   7. MOBILE MENU
+   ================================================================ */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 1000;
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    border: none;
+}
+.bar { width: 30px; height: 3px; background-color: var(--dusty-indigo); transition: 0.3s; border-radius: 3px; }
+
+.mobile-menu {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--oat-cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transform: translateY(-100%);
+    transition: 0.5s ease-in-out;
+    z-index: 1000;
+}
+.mobile-menu.active { transform: translateY(0); }
+.mobile-menu > a {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xxl);
+    color: var(--dusty-indigo);
+    text-decoration: none;
+}
+
+
+/* ================================================================
+   8. FAQ SECTION
+   ================================================================ */
+.faq-grid { max-width: 800px; margin: 0 auto; }
+
+details.faq-item {
+    border-radius: 18px;
+    border: 1px solid rgba(58,81,103,0.18);
+    background: rgba(255,255,255,0.98);
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 0.9rem;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.04);
+}
+details.faq-item[open] { box-shadow: 0 18px 48px rgba(0,0,0,0.07); }
+
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: var(--fs-base);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-question { flex: 1; }
+.faq-toggle-icon { flex-shrink: 0; font-style: normal; font-size: var(--fs-md); opacity: 0.55; }
+.faq-item p { margin-top: 0.7rem; font-size: var(--fs-sm); }
+
+
+/* ================================================================
+   9. FINAL CTA / CONTACT
+   ================================================================ */
+.cta-section {
+    padding: 8rem 2rem;
+    background-color: var(--dark-indigo);
+    text-align: center;
+    color: white;
+}
+.cta-section h2 { font-size: var(--fs-xxxl); margin-bottom: 1.5rem; color: var(--oat-cream); }
+.cta-section p { color: var(--oat-cream); }
+.cta-lead { max-width: 600px; margin: 0 auto 3rem; font-size: 1.3rem; opacity: 0.9; }
+.cta-section .btn-wrapper { display: flex; justify-content: center; }
+
+
+/* ================================================================
+   10. FOOTER
+   ================================================================ */
+footer { background-color: var(--dusty-indigo); color: var(--oat-cream); padding: 5rem 2rem 2rem; }
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-col h4 { font-size: var(--fs-base); margin-bottom: 1.5rem; color: var(--rich-sand); font-weight: 700; }
+.footer-col p { font-size: var(--fs-sm); color: rgba(255,255,255,0.75); }
+.footer-col a {
+    display: block;
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-col a:hover { color: var(--rich-sand); transform: translateX(5px); }
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    font-size: var(--fs-sm);
+}
+
+
+/* ================================================================
+   11. REVEAL ANIMATIONS
+   ================================================================ */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.js .reveal.active { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .js .reveal { opacity: 1; transform: none; }
+}
+
+
+/* ================================================================
+   12. RESPONSIVE BREAKPOINTS
+   ================================================================ */
+@media (max-width: 960px) {
+    nav { grid-template-columns: 1fr auto; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .section { padding-block: 4.2rem; }
+}
+
+@media (max-width: 640px) {
+    .cta-section .btn {
+        padding: 1rem 1.5rem;
+        font-size: var(--fs-sm);
+        white-space: normal;
+        text-align: center;
+        width: 90%;
+    }
+    .cta-section { padding: 5rem 1.5rem; }
+}
+
+
+/* ================================================================
+   13. HERO
+   ================================================================ */
+.hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle radial gradient behind hero content */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(221, 190, 155, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-headline {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xxxxl);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: var(--dark-indigo);
+    margin-bottom: 1.6rem;
+}
+
+.hero-headline em {
+    font-style: italic;
+    color: var(--rust-clay);
+}
+
+.hero-subhead {
+    font-family: var(--font-sans);
+    font-size: var(--fs-base);
+    color: var(--dusty-indigo);
+    max-width: 580px;
+    margin: 0 auto 2.8rem;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 640px) {
+    .hero { min-height: 80vh; padding: 5rem 1.2rem 3rem; }
+    .hero-headline { font-size: var(--fs-xxxl); }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .hero-actions .btn { width: 85%; }
+}
+
+
+/* ================================================================
+   14. INTRO / BELIEF
+   ================================================================ */
+.intro-section {
+    background-color: var(--dark-indigo);
+    padding-block: var(--section-padding-block);
+    text-align: center;
+}
+
+.intro-section .section-kicker { color: var(--rich-sand); }
+
+.intro-headline {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xxl);
+    color: var(--oat-cream);
+    max-width: 700px;
+    margin: 0 auto 1.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+}
+
+.intro-body {
+    font-size: var(--fs-base);
+    color: rgba(239, 233, 225, 0.82);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.75;
+}
+
+
+/* ================================================================
+   15. VALUES
+   ================================================================ */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.value-card {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(58,81,103,0.12);
+    border-radius: 18px;
+    padding: 2rem 1.8rem;
+    text-align: left;
+}
+
+.value-card h3 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-lg);
+    color: var(--dark-indigo);
+    margin-bottom: 0.6rem;
+}
+
+.value-card p {
+    font-size: var(--fs-sm);
+    color: var(--dusty-indigo);
+    opacity: 0.85;
+    line-height: 1.65;
+}
+
+
+/* ================================================================
+   16. SERVICES / PROGRAMS
+   ================================================================ */
+.programs-section { background-color: var(--dark-indigo); padding-block: var(--section-padding-block); }
+.programs-section .section-kicker { color: var(--rich-sand); }
+.programs-section .section-title { color: var(--oat-cream); }
+.programs-section .section-lead { color: rgba(239,233,225,0.8); }
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    margin-top: 3.5rem;
+}
+
+.program-card {
+    background:  var(--white);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 2.4rem 2rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    
+}
+
+.program-card-label {
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    color: var(--dusty--indigo);
+}
+
+.program-card h3 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xl);
+    color: var(--dusty--indigo);
+    line-height: 1.15;
+}
+
+.program-card p {
+    font-size: var(--fs-sm);
+    color: var(--dusty--indigo);
+    line-height: 1.7;
+    flex: 1;
+}
+
+.program-card .btn {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+
+
+/* ================================================================
+   17. ABOUT FOUNDER
+   ================================================================ */
+.about-section { text-align: center; }
+
+.founder-quote {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xl);
+    font-style: italic;
+    color: var(--dark-indigo);
+    max-width: 720px;
+    margin: 2rem auto 1.5rem;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+.founder-attribution {
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--moss-green);
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="mission.html">Mission</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <div class="btn-wrapper mt-sm">
+        <a href="insightsession.html" class="btn btn-primary btn-light-text">Book Session</a>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+    <a href="index.html" class="brand-lockup">
+        <img
+            src="https://static.wixstatic.com/shapes/d5cd96_17f787d101e14d609ad7946ecd85bbe4.svg"
+            alt="Clarity Academics Logo"
+            class="logo-svg">
+        <div class="brand-text">
+            <h4>Clarity Academics</h4>
+            <span>Clarity. Confidence. Calling.</span>
+        </div>
+    </a>
+
+    <div class="nav-links">
+        <a href="mission.html">Mission</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+    </div>
+
+    <div class="nav-cta">
+        <a href="insightsession.html" class="btn btn-primary btn-nav btn-light-text">Book Insight Session</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </button>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero">
+        <div class="hero-inner reveal">
+            <span class="section-kicker">Academic Coaching &amp; Tutoring</span>
+            <h1 class="hero-headline">
+                Boost grades,<br>
+                build confidence,<br>
+                find <em>clarity.</em>
+            </h1>
+            <p class="hero-subhead">
+                Not only in Math and Science — but in your student's life. Holistic academic coaching
+                that steadies the whole person, not just the grade.
+            </p>
+            <div class="hero-actions">
+                <a href="insightsession.html" class="btn btn-primary btn-light-text">Book a Free Insight Session</a>
+                <a href="services.html" class="btn btn-secondary">Explore Programs</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         INTRO / BELIEF
+         ============================================================ -->
+    <section class="intro-section section">
+        <div class="container reveal">
+            <span class="section-kicker">Our Belief</span>
+            <p class="intro-headline">
+                Academic growth is spiritual growth.
+            </p>
+            <p class="intro-body">
+                In a world of standardized testing and rigid curricula, we offer a sanctuary where
+                questions are encouraged. Learning strategies backed by neuroscience. Mentorship
+                for mind, body, and spirit.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         VALUES
+         ============================================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="centered-page reveal">
+                <span class="section-kicker">What we stand for</span>
+                <h2 class="section-title">Principles That Guide Every Session</h2>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card reveal">
+                    <h3>Loving Challenge</h3>
+                    <p>We challenge learners lovingly, because comfort never forged strong minds.</p>
+                </div>
+                <div class="value-card reveal">
+                    <h3>Critical Truth</h3>
+                    <p>We don't follow fads. We teach students to think critically and align learning with deep truth.</p>
+                </div>
+                <div class="value-card reveal">
+                    <h3>Structure as Soul-Work</h3>
+                    <p>Consistency and structure aren't just for school — they are soul-shaping tools for life.</p>
+                </div>
+                <div class="value-card reveal">
+                    <h3>Clarity Over Fear</h3>
+                    <p>Confusion breeds fear. We dismantle anxiety by making the complex clear and approachable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         PROGRAMS
+         ============================================================ -->
+    <section class="programs-section section" id="programs">
+        <div class="container">
+            <div class="centered-page reveal">
+                <span class="section-kicker">Our Programs</span>
+                <h2 class="section-title">Find the Right Fit</h2>
+                <p class="section-lead">
+                    Three tiers of support — each designed for a different student, each rooted in the same
+                    whole-person philosophy.
+                </p>
+            </div>
+
+            <div class="programs-grid">
+
+                <div class="program-card reveal">
+                    <span class="program-card-label">Flagship</span>
+                    <h3>Clarity Elite</h3>
+                    <p>
+                        When school starts touching everything — your child's sleep, mood, confidence, and even
+                        how they talk about God — Clarity Elite steps in as a steady guide. We combine
+                        high-level tutoring with coaching on mindset, organization, and faith-shaped resilience,
+                        so your student moves from overwhelmed and reactive to clear, proactive, and grounded.
+                    </p>
+                    <a href="elite.html" class="btn btn-secondary">Learn More</a>
+                </div>
+
+                <div class="program-card reveal">
+                    <span class="program-card-label">1-on-1 Support</span>
+                    <h3>Clarity Core</h3>
+                    <p>
+                        For the student who can learn the material but keeps slipping through the cracks —
+                        missed points, rushed homework, shaky test prep. In a consistent 1:1 space, we slow
+                        things down, clear up confusion, and build solid study habits right alongside content.
+                    </p>
+                    <a href="core.html" class="btn btn-secondary">Learn More</a>
+                </div>
+
+                <div class="program-card reveal">
+                    <span class="program-card-label">Small Group</span>
+                    <h3>Clarity Cohort</h3>
+                    <p>
+                        Some students open up the moment they realize they're not the only one who doesn't
+                        "get it" yet. Cohort turns that moment into a weekly rhythm — small, carefully led
+                        groups where students ask real questions and see how others think.
+                    </p>
+                    <a href="cohort.html" class="btn btn-secondary">Learn More</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         ABOUT / FOUNDER
+         ============================================================ -->
+    <section class="section about-section">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-kicker">The Founder</span>
+                <h2 class="section-title">A Place Where Science &amp; Faith Walk Together</h2>
+            </div>
+            <blockquote class="founder-quote reveal">
+                "My own journey in the classroom led me to faith, and I felt called to create something
+                different: a place where science, reason, and belief walk side by side in peace."
+            </blockquote>
+            <p class="founder-attribution reveal">— Founder, Clarity Academics</p>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         FAQ SECTION
+         ============================================================ -->
+    <section class="section" id="faq">
+        <div class="container centered-page">
+            <div class="reveal">
+                <span class="section-kicker">Questions, answered</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-lead">
+                    A few of the most common questions families ask before getting started.
+                </p>
+            </div>
+
+            <div class="faq-grid mt-lg">
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-question">Can we start with Core or Cohort and move up to Elite later?</span>
+                        <span class="faq-toggle-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <p>Yes. Many families start with Core or Cohort to stabilize grades, then move into Elite when they're ready for deeper coaching and between-session access. We'll help you decide if and when that shift makes sense.</p>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-question">Does my student have to be in AP Physics to join Elite?</span>
+                        <span class="faq-toggle-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <p>No. AP Physics Elite is one path, but the Hybrid Coaching + Tutoring path is open to students in upper-level math or science who need whole-picture support. We'll talk through courses, goals, and bandwidth in your consult.</p>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-question">Do you work with students who are already doing "fine" in school?</span>
+                        <span class="faq-toggle-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <p>Absolutely. Some Elite students already have strong grades but feel constantly behind, anxious, or unsure how to sustain their pace. Elite can help them shift from grinding to grounded.</p>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-question">How does scheduling and billing work for Elite?</span>
+                        <span class="faq-toggle-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <p>We'll agree on a weekly time (or times) that works with your family's rhythms. Billing is handled in simple, predictable blocks — no surprise add-ons. Full policy details are shared before you commit, and we'll walk through them together.</p>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-question">What if my student is anxious or hesitant about coaching?</span>
+                        <span class="faq-toggle-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <p>That's normal. We never force vulnerability. The first sessions focus on calm, concrete wins: understanding the material better, getting organized, reducing "surprise" stress. Trust tends to follow results.</p>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-question">What happens if we need to pause or change tiers?</span>
+                        <span class="faq-toggle-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <p>Life happens. If you need to pause or switch tiers, we'll talk through options and keep communication clear so your student never feels blindsided by adult logistics.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         FINAL CTA
+         ============================================================ -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Ready for Clarity?</h2>
+            <p class="cta-lead">Join the enthusiastic believers who are finding confidence in the classroom and beyond.</p>
+            <div class="btn-wrapper">
+                <a href="insightsession.html" class="btn btn-inverted">
+                    Book Complimentary Insight Session
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Clarity Academics</h4>
+                <p>Lexington, KY<br>Online Worldwide</p>
+            </div>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <a href="elite.html">Elite</a>
+                <a href="core.html">Core</a>
+                <a href="cohort.html">Cohort</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:clarityacademics@gmail.com">clarityacademics@gmail.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="year"></span> Clarity Academics. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+/* ================================================================
+   JAVASCRIPT TABLE OF CONTENTS
+   0. Progressive Enhancement Flag
+   1. Mobile Menu Toggle
+   2. ESC Key Handler
+   3. Click Outside Handler
+   4. Resize Handler
+   5. Scroll Reveal Animations
+   6. Navbar Scroll Effect
+   7. Body Padding Sync
+   8. Footer Year
+   9. FAQ Toggle Indicator
+   10. Event Binding
+   ================================================================ */
+
+/* 0. Progressive Enhancement */
+document.documentElement.classList.add('js');
+
+/* 1. Mobile Menu Toggle */
+let _previousBodyOverflow = '';
+
+function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    if (!menu || !hamburger) return;
+
+    const isActive = !menu.classList.contains('active');
+    menu.classList.toggle('active', isActive);
+    hamburger.setAttribute('aria-expanded', String(isActive));
+    menu.setAttribute('aria-hidden', String(!isActive));
+
+    if (isActive) {
+        _previousBodyOverflow = document.body.style.overflow || '';
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    } else {
+        document.body.style.overflow = _previousBodyOverflow;
+        document.body.classList.remove('menu-open');
+        hamburger.focus();
+    }
+}
+
+/* 2. ESC Key Handler */
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const menu = document.getElementById('mobileMenu');
+        if (menu && menu.classList.contains('active')) toggleMenu();
+    }
+});
+
+/* 3. Click Outside Handler */
+document.addEventListener('click', (event) => {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    if (!menu || !hamburger) return;
+    if (!menu.classList.contains('active')) return;
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) toggleMenu();
+});
+
+/* 4. Resize Handler */
+window.addEventListener('resize', () => {
+    const menu = document.getElementById('mobileMenu');
+    if (window.innerWidth >= 960 && menu && menu.classList.contains('active')) toggleMenu();
+});
+
+/* 5. Scroll Reveal */
+const revealElements = document.querySelectorAll('.reveal');
+
+function handleReveal() {
+    const windowHeight = window.innerHeight;
+    const offset = 70;
+    revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < windowHeight - offset) el.classList.add('active');
+    });
+}
+window.addEventListener('load', handleReveal);
+
+/* 6. Navbar Scroll Effect */
+const nav = document.getElementById('navbar');
+
+function handleNavScroll() {
+    if (!nav) return;
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+}
+
+let _scrollRafPending = false;
+function _onScrollRaf() {
+    if (_scrollRafPending) return;
+    _scrollRafPending = true;
+    requestAnimationFrame(() => {
+        _scrollRafPending = false;
+        handleNavScroll();
+        handleReveal();
+    });
+}
+window.addEventListener('scroll', _onScrollRaf, { passive: true });
+window.addEventListener('load', handleNavScroll);
+
+/* 7. Body Padding Sync */
+(function syncBodyPaddingWithNav() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    let lastHeight = 0;
+    let rafId = 0;
+
+    function applyPaddingIfNeeded() {
+        const h = Math.ceil(navbar.getBoundingClientRect().height);
+        if (h > lastHeight) { lastHeight = h; document.body.style.paddingTop = h + 'px'; }
+    }
+    function schedule() {
+        if (rafId) return;
+        rafId = requestAnimationFrame(() => { rafId = 0; applyPaddingIfNeeded(); });
+    }
+    applyPaddingIfNeeded();
+    if ('ResizeObserver' in window) {
+        const ro = new ResizeObserver(schedule);
+        ro.observe(navbar);
+    } else {
+        window.addEventListener('resize', schedule, { passive: true });
+        window.addEventListener('scroll', schedule, { passive: true });
+    }
+    window.addEventListener('load', schedule, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule).catch(() => {});
+})();
+
+/* 8. Footer Year */
+const yearSpan = document.getElementById('year');
+if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+/* 9. FAQ Toggle Indicator */
+document.querySelectorAll('.faq-item').forEach((item) => {
+    item.addEventListener('toggle', () => {
+        const icon = item.querySelector('.faq-toggle-icon');
+        if (icon) icon.textContent = item.open ? '\u2212' : '+';
+    });
+});
+
+/* 10. Event Binding */
+const hamburgerBtn = document.getElementById('hamburger');
+if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+
+const mobileMenuEl = document.getElementById('mobileMenu');
+if (mobileMenuEl) {
+    mobileMenuEl.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            if (mobileMenuEl.classList.contains('active')) toggleMenu();
+        });
+    });
+}
+</script>
+
+</body>
+</html>
